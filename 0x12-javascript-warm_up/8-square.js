@@ -11,7 +11,7 @@ for(i=0; i<parseInt(argv[2]); i++){
 
 
 if(!argv[2] || (argv[2] && !parseInt(argv[2]))){
-    console.log("Missing size");
+    console.log('Missing size');
 }
 
 
