@@ -8,7 +8,7 @@ for(i=0; i < 3; i++){
 }
 
 if(!argv[2]){
-    console.log("undefine is undefine");
+    console.log('undefine is undefine');
 }
 
 if(argv[2] && !argv[3]){
