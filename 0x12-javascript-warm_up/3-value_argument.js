@@ -1,11 +1,8 @@
 #!/usr/bin/node
-const { argv } = require('node:process');
+// prints the first argument passed to it
 
-for(i=2; argv[i]; i++){
-
-    console.log(argv[i]);    
-}
-
-if(!argv[2]){
-    console.log("No Argument");
+if (process.argv[2] === undefined) {
+  console.log('No argument');
+} else {
+  console.log(process.argv[2]);
 }
