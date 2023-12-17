@@ -1,24 +1,34 @@
 #!/usr/bin/python3
-"""takes in an argument and displays all values in the
-states table of hbtn_0e_0_usa where name matches the argument.
-"""
-if __name__ == "__main__":
-    import MySQLdb
-    import sys
-    conn = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
-        charset="utf8")
-    cur = conn.cursor()
-    cur.execute(
-        "SELECT * FROM states WHERE name LIKE '%%{userinput}%%' \
-ORDER BY id ASC".format(
-            userinput=sys.argv[4]))
-    query_rows = cur.fetchall()
-    for row in query_rows:
+"""Filter states by user input"""
+import MySQLdb
+
+
+def main():
+
+    # connect
+    db = MySQLdb.connect(host='localhost',
+                         port=3306,
+                         user=argv[1],
+                         passwd=argv[2],
+                         db=argv[3])
+    # cursor
+    c = db.cursor()
+
+    # execute query
+    c.execute("SELECT * FROM states WHERE BINARY name = '{:s}'\
+    ORDER BY id ASC".format(argv[4]))
+
+    # fetch
+    rows = c.fetchall()
+
+    # print
+    for row in rows:
         print(row)
-    cur.close()
-    conn.close()
+
+    # close
+    c.close()
+    db.close()
+
+if __name__ == "__main__":
+    from sys import argv
+    main()
